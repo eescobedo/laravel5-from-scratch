@@ -20,6 +20,8 @@ Route::get ('about', function(){
 });
 
 Route::get ('cards', 'CardsController@index');
+//Route::get ('cards/{id}', 'CardsController@show');
+Route::get ('cards/{card}', 'CardsController@show');
 
 /*
 |--------------------------------------------------------------------------
