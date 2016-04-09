@@ -18,6 +18,9 @@ Route::get('about', 'PagesController@about');
 Route::get ('about', function(){
     return view('pages.about');
 });
+
+Route::get ('cards', 'CardsController@index');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
