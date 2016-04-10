@@ -14,9 +14,16 @@ class NotesController extends Controller
 //        $note->body = $request->body;
 //        $card->notes()->save($note);
 
-        $card->addNote(
-            new Note($request->all())
-        );
+        $this->validate($request, [
+            'body' => 'required|min:10'
+        ]);
+
+
+        $note = new Note($request->all());
+//        $note->user_id = 1; // hardcoded, correctly is under this line
+//        $note->user_id = Auth::id();
+
+        $card->addNote($note, 1); // hardcode user id
 
         return back();
     }
