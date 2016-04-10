@@ -16,14 +16,18 @@ class CardsController extends Controller
 //        $cards = DB::table('cards')->get();
         $cards = Card::all();
 
-        return view ('cards.index', compact('cards'));
+        return view('cards.index', compact('cards'));
     }
 
 //    public function show($id)
     public function show(Card $card)
     {
-//        $card = Card::find($card);
-//        return $card; // return object with json format
+//        $card = Card::find($card); -- get information of card
+//        $card = Card::with('notes')->get(); -- get card with information of note.
+//        $card = Card::with('notes.user')->find(1); -- get card with note and user information
+        $card->load('notes.user'); // get card with note and user information, simple
+//        return $card;
+
 
         return view('cards.show', compact('card'));
     }
