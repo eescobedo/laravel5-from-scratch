@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PagesController@home');
+//Route::get('/', 'PagesController@home');
 Route::get('about', 'PagesController@about');
 
 
@@ -45,6 +45,20 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/dashboard', 'HomeController@index');
 //    Route::get('/home', 'HomeController@index');
+
+
+    Route::get('begin', function()
+    {
+        Session::flash('status', 'Hello There');
+
+        return Redirect::to('/');
+    });
+
+
+
+    Route::get('/', function() {
+        return view('welcome');
+    });
 });
 
 //Route::group(['middleware' => 'web'], function () {
