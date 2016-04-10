@@ -11,17 +11,14 @@
 |
 */
 
-Route::get('/', 'PagesController@home');
+//Route::get('/', 'PagesController@home');
 Route::get('about', 'PagesController@about');
 
 
-Route::get ('about', function(){
+Route::get('about', function () {
     return view('pages.about');
 });
 
-Route::get ('cards', 'CardsController@index');
-//Route::get ('cards/{id}', 'CardsController@show');
-Route::get ('cards/{card}', 'CardsController@show');
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +33,36 @@ Route::get ('cards/{card}', 'CardsController@show');
 
 Route::group(['middleware' => ['web']], function () {
     //
+    Route::get('cards', 'CardsController@index');
+    //Route::get ('cards/{id}', 'CardsController@show');
+    Route::get('cards/{card}', 'CardsController@show');
+
+    Route::post('cards/{card}/notes', 'NotesController@store');
+    Route::get('notes/{note}/edit', 'NotesController@edit');
+    Route::patch('notes/{note}', 'NotesController@update');
+
+    Route::auth();
+
+    Route::get('/dashboard', 'HomeController@index');
+//    Route::get('/home', 'HomeController@index');
+
+
+    Route::get('begin', function()
+    {
+        Session::flash('status', 'Hello There');
+
+        return Redirect::to('/');
+    });
+
+
+
+    Route::get('/', function() {
+        return view('welcome');
+    });
 });
+
+//Route::group(['middleware' => 'web'], function () {
+//    Route::auth();
+//
+//    Route::get('/home', 'HomeController@index');
+//});

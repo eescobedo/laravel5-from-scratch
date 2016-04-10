@@ -4,10 +4,14 @@
 
         <meta charset="UTF-8">
         <title>New Project</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
         {{--<link rel="stylesheet" href="/css/style.css">--}}
-        <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
+        {{--<link rel="stylesheet" href="{{ elixir('css/app.css') }}">--}}
 
         @yield('header')
+
 
         {{--<link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">--}}
 
@@ -43,7 +47,9 @@
     </head>
     <body>
 
-    @yield('content')
+    <div class="container">
+        @yield('content')
+    </div>
 
     @yield('footer')
 
